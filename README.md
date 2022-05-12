@@ -2,7 +2,7 @@
 
 This project has a lambda function that will generate notification for S3 Bucket that has no records inserted in last 10 days.
 
-## Steps:
+## Set-up:
 
 1. Clone the project
 2. Provide `TopicArn` and `Bucket` as inputs in `.env` file.
