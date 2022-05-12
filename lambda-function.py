@@ -9,7 +9,7 @@ def lambda_handler(event, context):
     today = datetime.now(timezone.utc)
     get_last_modified = lambda obj: int(obj['LastModified'].strftime('%s'))
     s3 = boto3.client('s3', region_name='us-east-1')
-    objs = s3.list_objects_v2(Bucket='sb-dev-webs3bucket-vsj7qme3h7pf')['Contents']
+    objs = s3.list_objects_v2(Bucket=os.getenv("Bucket"))['Contents']
     last_added = [obj['Key'] for obj in sorted(objs, key=get_last_modified)][-1] 
     objects = s3.list_objects(Bucket=os.getenv("Bucket"))
     for o in objects["Contents"]:
